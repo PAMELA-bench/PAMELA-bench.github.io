@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAMELA: Personalizing Text-to-Image Generation to Individual Taste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --bg: #fdfdfd;
+            --text: #333;
+            --text-light: #555;
+            --border: #e0e0e0;
+            --section-bg: #f8f9fa;
+            --max-width: 900px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+            margin-bottom: 28px;
+        }
+
+        /* Authors */
+        .authors {
+            margin-bottom: 16px;
+            font-size: 1.15rem;
+        }
+
+        .author-block {
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .authors a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        .authors sup {
+            font-size: 0.7em;
+            margin-left: 1px;
+            color: var(--text-light);
+        }
+
+        .author-separator {
+            color: var(--text-light);
+            margin: 0 2px;
+        }
+
+        .affiliations {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 28px;
+        }
+
+        .affiliations sup {
+            font-size: 0.75em;
+            margin-right: 2px;
+            color: var(--text-light);
+        }
+
+        .affiliation-entry {
+            display: inline;
+            margin: 0 8px;
+        }
+
+        .equal-note {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* Links bar */
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(52, 152, 219, 0.04);
+        }
+
+        .links a i {
+            font-size: 1.1rem;
+        }
+
+        /* Figure */
+        .figure {
+            margin: 0 0 50px;
+            text-align: center;
+        }
+
+        .figure img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .figure figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 44px;
+        }
+
+        h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .abstract-text {
+            font-size: 1.05rem;
+            text-align: justify;
+            color: var(--text-light);
+        }
+
+        .findings ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .findings li {
+            padding: 12px 0 12px 28px;
+            position: relative;
+            font-size: 1.02rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .findings li:last-child {
+            border-bottom: none;
+        }
+
+        .findings li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0 50px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.7rem; }
+            header { padding: 36px 0 16px; }
+            .links a { padding: 8px 16px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Personalizing Text-to-Image Generation to Individual Taste</h1>
+
+        <div class="authors">
+            <span class="author-block"><a href="https://example.com">Anne-Sofie Maerten</a><sup>1,2</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://example.com">Juliane Verwiebe</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://example.com">Shyamgopal Karthik</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://example.com">Ameya Prabhu</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://example.com">Johan Wagemans</a><sup>2</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://example.com">Matthias Bethge</a><sup>1</sup></span>
+        </div>
+
+        <div class="affiliations">
+            <span class="affiliation-entry"><sup>1</sup>T&uuml;bingen AI Center, University of T&uuml;bingen</span>
+            <span class="affiliation-entry"><sup>2</sup>Department of Brain and Cognition, KU Leuven</span>
+        </div>
+
+        <div class="links">
+            <a href="https://arxiv.org/abs/XXXX.XXXXX"><i class="fa-solid fa-file-lines"></i> Paper</a>
+            <a href="https://github.com/PLACEHOLDER/PAMELA"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://huggingface.co/datasets/PLACEHOLDER"><i class="fas fa-database"></i> Dataset</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <figure class="figure">
+        <img src="figure1.png" alt="Overview of PAMELA: Personalizing Text-to-Image Generation to Individual Taste">
+        <figcaption>Figure 1: Overview of our approach. [Placeholder caption describing the figure.]</figcaption>
+    </figure>
+
+    <section>
+        <h2>Abstract</h2>
+        <p class="abstract-text">
+            Modern text-to-image (T2I) models generate high-fidelity visuals but remain indifferent to individual user preferences.
+            While existing reward models optimize for "average" human appeal, they fail to capture the inherent subjectivity of aesthetic judgment.
+            In this work, we introduce a novel dataset and predictive framework, called PAM$\exists$LA, designed to model personalized image evaluations.
+            Our dataset comprises 70,000 ratings across 5,000 diverse images generated by state-of-the-art models (Flux 2 and Nano Banana).
+            Each image is evaluated by 15 unique users, providing a rich distribution of subjective preferences across domains such as art, design, fashion, and cinematic photography.
+            Leveraging this data, we propose a personalized reward model trained jointly on our high-quality annotations and existing aesthetic assessment subsets.
+            We demonstrate that our model predicts individual liking with higher accuracy than the majority of current state-of-the-art methods predict population-level preferences.
+            Using our personalized predictor, we demonstrate how simple prompt optimization methods can be used to steer generations towards individual user preferences.
+            Our results highlight the importance of data quality and personalization to handle the subjectivity of user preferences.
+            We release our dataset and model to facilitate standardized research in personalized T2I alignment and subjective visual quality assessment.
+        </p>
+    </section>
+
+    <section class="findings">
+        <h2>Key Findings</h2>
+        <ul>
+            <li>[Placeholder: First key finding or contribution.]</li>
+            <li>[Placeholder: Second key finding or contribution.]</li>
+            <li>[Placeholder: Third key finding or contribution.]</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        &copy; 2026 &mdash; PAMELA Project
+    </div>
+</footer>
+
+</body>
+</html>
