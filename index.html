@@ -11,8 +11,8 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --accent: #3498db;
-            --accent-hover: #2980b9;
+            --accent: #a82c2c;
+            --accent-hover: #8c2222;
             --bg: #fdfdfd;
             --text: #333;
             --text-light: #555;
@@ -42,23 +42,23 @@
 
         /* Header */
         header {
-            padding: 60px 0 20px;
+            padding: 36px 0 12px;
             text-align: center;
         }
 
         h1 {
             font-family: 'Source Serif 4', serif;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary);
-            line-height: 1.3;
-            margin-bottom: 28px;
+            line-height: 1.25;
+            margin-bottom: 16px;
         }
 
         /* Authors */
         .authors {
-            margin-bottom: 16px;
-            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
         }
 
         .author-block {
@@ -87,9 +87,9 @@
         }
 
         .affiliations {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-light);
-            margin-bottom: 28px;
+            margin-bottom: 16px;
         }
 
         .affiliations sup {
@@ -115,14 +115,14 @@
             justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .links a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
+            gap: 6px;
+            padding: 8px 18px;
             border: 1.5px solid var(--border);
             border-radius: 8px;
             color: var(--text);
@@ -144,7 +144,7 @@
 
         /* Figure */
         .figure {
-            margin: 0 0 50px;
+            margin: 0 -80px 40px;
             text-align: center;
         }
 
@@ -152,6 +152,12 @@
             max-width: 100%;
             border-radius: 6px;
             box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 1060px) {
+            .figure {
+                margin: 0 0 40px;
+            }
         }
 
         .figure figcaption {
@@ -211,6 +217,133 @@
             border-radius: 50%;
         }
 
+        .findings li a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .findings li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Detail sections */
+        .finding-detail {
+            margin-bottom: 48px;
+        }
+
+        .finding-detail .finding-text {
+            padding: 24px 28px;
+            background: var(--section-bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .finding-detail h3 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .finding-detail p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        .finding-figures {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .finding-figures figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .finding-figures img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .finding-figures figcaption {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .detail-figure {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .detail-figure img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Benchmark */
+        .benchmark-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 0.95rem;
+        }
+
+        .benchmark-table th,
+        .benchmark-table td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .benchmark-table th {
+            background: var(--section-bg);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* BibTeX */
+        .bibtex-box {
+            position: relative;
+            background: var(--section-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .bibtex-box pre {
+            margin: 0;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -234,12 +367,12 @@
         <h1>Personalizing Text-to-Image Generation to Individual Taste</h1>
 
         <div class="authors">
-            <span class="author-block"><a href="https://example.com">Anne-Sofie Maerten</a><sup>1,2</sup><span class="author-separator">,</span></span>
-            <span class="author-block"><a href="https://example.com">Juliane Verwiebe</a><sup>1</sup><span class="author-separator">,</span></span>
-            <span class="author-block"><a href="https://example.com">Shyamgopal Karthik</a><sup>1</sup><span class="author-separator">,</span></span>
-            <span class="author-block"><a href="https://example.com">Ameya Prabhu</a><sup>1</sup><span class="author-separator">,</span></span>
-            <span class="author-block"><a href="https://example.com">Johan Wagemans</a><sup>2</sup><span class="author-separator">,</span></span>
-            <span class="author-block"><a href="https://example.com">Matthias Bethge</a><sup>1</sup></span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=AMWsKR4AAAAJ&hl=nl">Anne-Sofie Maerten</a><sup>1,2</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=GS-RhVkAAAAJ">Juliane Verwiebe</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://sgk98.github.io/">Shyamgopal Karthik</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://ameya.prabhu.be/">Ameya Prabhu</a><sup>1</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?hl=en&user=BjwCO0IAAAAJ">Johan Wagemans</a><sup>2</sup><span class="author-separator">,</span></span>
+            <span class="author-block"><a href="https://bethgelab.org/">Matthias Bethge</a><sup>1</sup></span>
         </div>
 
         <div class="affiliations">
@@ -249,8 +382,8 @@
 
         <div class="links">
             <a href="https://arxiv.org/abs/XXXX.XXXXX"><i class="fa-solid fa-file-lines"></i> Paper</a>
-            <a href="https://github.com/PLACEHOLDER/PAMELA"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="https://huggingface.co/datasets/PLACEHOLDER"><i class="fas fa-database"></i> Dataset</a>
+            <a href="https://github.com/PAMELA-bench/PAMELA_Predictor"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://huggingface.co/datasets/bethgelab/PAMELA"><i class="fas fa-database"></i> Dataset</a>
         </div>
     </div>
 </header>
@@ -258,9 +391,27 @@
 <main class="container">
 
     <figure class="figure">
-        <img src="figure1.png" alt="Overview of PAMELA: Personalizing Text-to-Image Generation to Individual Taste">
-        <figcaption>Figure 1: Overview of our approach. [Placeholder caption describing the figure.]</figcaption>
+        <img src="figures/figure1.png" alt="Overview of PAMELA: Personalizing Text-to-Image Generation to Individual Taste">
+        <figcaption>Prior work on preference alignment focuses on steering generations towards samples with a global reward. In contrast, we are able to steer samples with prompt optimization to generate different samples tailored to individual taste.</figcaption>
     </figure>
+
+    <section class="findings">
+        <h2>TL;DR</h2>
+        <ul>
+            <li><strong>The problem:</strong> Text-to-image models optimize for average taste &mdash; but aesthetics are personal.</li>
+            <li><strong>Our solution:</strong> PAM&#x018E;LA, a benchmark dataset (70K ratings, 15 users per image) and a personalized reward model.</li>
+            <li><strong>The result:</strong> PAM&#x018E;LA steers generations toward <em>your</em> taste while keeping images realistic &mdash; existing reward models can't do both.</li>
+        </ul>
+    </section>
+
+    <section class="findings">
+        <h2>Key Findings</h2>
+        <ul>
+            <li><a href="#finding-1">Existing methods oversaturate colors, loose realism, and sometimes <span style="white-space:nowrap;">prompt-adherence.&thinsp;&#8594;</span></a></li>
+            <li><a href="#finding-2">PAM&#x018E;LA steers towards photorealism and alters compositional attributes, such as lighting, camera angle, and <span style="white-space:nowrap;">viewpoint.&thinsp;&#8594;</span></a></li>
+            <li><a href="#finding-3">Users prefer images optimized for <span style="white-space:nowrap;">them.&thinsp;&#8594;</span></a></li>
+        </ul>
+    </section>
 
     <section>
         <h2>Abstract</h2>
@@ -278,20 +429,104 @@
         </p>
     </section>
 
-    <section class="findings">
-        <h2>Key Findings</h2>
-        <ul>
-            <li>[Placeholder: First key finding or contribution.]</li>
-            <li>[Placeholder: Second key finding or contribution.]</li>
-            <li>[Placeholder: Third key finding or contribution.]</li>
-        </ul>
+    <section>
+        <h2>Results in Detail</h2>
+
+        <div class="finding-detail" id="finding-1">
+            <div class="finding-text">
+                <h3>Existing reward models degrade image quality</h3>
+                <p>We first compare PAM&#x018E;LA against global baselines (HPSv3 and Q-Align). We find that consensus-driven models collapse to a generic, oversaturated "AI look" during optimization.</p>
+            </div>
+            <div class="finding-figures">
+                <figure>
+                    <img src="figures/glasshouse.png" alt="Comparison of image quality across reward models">
+                </figure>
+            </div>
+            <div class="finding-text">
+                <p>HPSv3 suffers from aesthetic instability across iterations, while Q-Align over-optimizes, losing both realism and prompt adherence. In contrast, PAM&#x018E;LA maintains high-fidelity photorealism. Instead of artificially boosting saturation, it steers images by altering compositional attributes, such as lighting, camera angle, and viewpoint.</p>
+            </div>
+            <div class="finding-figures">
+                <figure>
+                    <img src="figures/multi_scorer_with_participants.png" alt="Multi-scorer personalization results">
+                </figure>
+            </div>
+        </div>
+
+        <div class="finding-detail" id="finding-2">
+            <div class="finding-text">
+                <h3>PAM&#x018E;LA preserves realism while personalizing</h3>
+                <p>We observe that PAM&#x018E;LA prioritizes realism even when generating inherently surreal concepts. We test this using the prompt "floating mossy rocks". The initial baseline image defaults to a heavily stylized, digital art aesthetic. However, PAM&#x018E;LA steers subsequent iterations toward a physically plausible rendering, grounding the surreal subject matter in realistic textures and lighting.</p>
+            </div>
+            <div class="finding-figures">
+                <figure>
+                    <img src="figures/mossy_rocks.png" alt="Mossy rocks example showing compositional changes">
+                </figure>
+            </div>
+        </div>
+
+        <div class="finding-detail" id="finding-3">
+            <div class="finding-text">
+                <h3>Users prefer personally optimized images</h3>
+                <p>To validate that our optimization produces images that users actually prefer, we conduct a pairwise preference study in which participants judge images without any knowledge of how they were generated. This allows us to assess whether personalized optimization yields meaningful perceptual improvements over both the unoptimized base images and images optimized with generic, non-personalized reward models.</p>
+            </div>
+            <div class="finding-figures">
+                <figure>
+                    <img src="figures/userstudy_interface.png" alt="User study interface">
+                </figure>
+            </div>
+            <div class="finding-text">
+                <p>Images personalized with PAM&#x018E;LA to the evaluating participant's own preferences achieve the highest score (1065), followed by images optimized with PAM&#x018E;LA for other participants (1038). Both significantly outperform the initial, un-optimized image (1016), with non-overlapping 95% confidence intervals. This demonstrates the effectiveness of PAM&#x018E;LA in capturing human preferences and that this improvement is strongest when the image is tailored to the specific viewer, suggesting that PAM&#x018E;LA captures meaningful user-specific taste. In contrast, optimizing for generic reward models harms perceptual quality. Images optimized with HPSv3 (959) and Q-Align (922) are both ranked significantly below the initial image, indicating that maximizing these metrics does not align with human preferences and in fact degrades the output relative to the un-optimized baseline image.</p>
+            </div>
+            <div class="finding-figures">
+                <figure>
+                    <img src="figures/bt_elo_category.png" alt="Bradley-Terry ELO ratings by category">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>The PAM&#x018E;LA Benchmark</h2>
+        <p class="abstract-text">
+            We introduce PAM&#x018E;LA, a large-scale dataset for image personalization with 70,000 ratings for 200 users.
+        </p>
+        <div class="detail-figure">
+            <img src="figures/group_examples_figure.png" alt="PAMELA benchmark examples">
+        </div>
+    </section>
+
+    <section>
+        <h2>The PAM&#x018E;LA Predictor</h2>
+        <p class="abstract-text">
+            Visual and semantic features are extracted by a frozen SigLIP2 encoder;
+            user demographic and image metadata embeddings are produced by a frozen embedding encoder. All features are projected to a shared dimension,
+            assembled as a token sequence with a learnable <code>[CLS]</code> token,
+            and fused by a shallow transformer encoder. The <code>[CLS]</code> output
+            is passed to a linear head to predict the aesthetic score and trained with a mean squared loss.
+        </p>
+        <div class="detail-figure">
+            <img src="figures/architecture_poster.png" alt="Architecture of the PAMELA personalized aesthetic quality predictor">
+        </div>
+    </section>
+
+    <section>
+        <h2>BibTeX</h2>
+        <div class="bibtex-box">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bibtex').textContent)">Copy</button>
+<pre id="bibtex">@article{maerten2026pamela,
+  title     = {Personalizing Text-to-Image Generation to Individual Taste},
+  author    = {Maerten, Anne-Sofie and Verwiebe, Juliane and Karthik, Shyamgopal and Prabhu, Ameya and Wagemans, Johan and Bethge, Matthias},
+  journal   = {arXiv preprint arXiv:XXXX.XXXXX},
+  year      = {2026}
+}</pre>
+        </div>
     </section>
 
 </main>
 
 <footer>
     <div class="container">
-        &copy; 2026 &mdash; PAMELA Project
+        &copy; 2026 &mdash; PAM&#x018E;LA Project
     </div>
 </footer>
 
